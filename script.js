@@ -8,6 +8,12 @@ const confirmPassword = document.getElementById("confirmPassword");
 const userPhone = document.getElementById("phone");
 const registrationForm = document.getElementById("registrationForm");
 
+const passwordInput = document.getElementById("password");
+
+function goToMainPage() {
+    window.location.href = "MainPage.html"; // 이동할 페이지 URL
+}
+
 const updateHelperText = (input, message, isValid) => {
     // input 태그의 부모 태그에 접근 하는 것
     // 예시로 input 태그를 userEmail로 접근했다고 하면 아래 태그들의 최상위 태그를 의미
@@ -59,17 +65,26 @@ const validateEmail = (input) => {
 }
 
 // 비밀번호 강도 설정
-const checkPasswordStrength = (password) => {
+const checkPasswordStrength = (passwordInput) => {
     const strongPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (strongPattern.test(password.value) == true) {
-        updateHelperText(password, "비밀번호 강도:강함", true)
+    const errorBox = document.getElementById("errorBox");
+    if (strongPattern.test(passwordInput.value)) {
+        updateHelperText(passwordInput, "", true)
+        passwordInput.setCustomValidity(""); // 유효성 검사 통과
+        errorBox.style.display = "none";
         return true;
     }
     else {
-        updateHelperText(password, "비밀번호는 8자 이상, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.", false);
+        updateHelperText(passwordInput, "", false)
+        passwordInput.setCustomValidity("비밀번호는 최소 8자 이상, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다."); // 유효성 검사 실패
+
+        if(errorBox.style.display === "none") {
+            errorBox.textContent = "비밀번호는 최소 8자 이상, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.";
+            errorBox.style.display = "block";
+        }
         return false;
     }
-}
+};
 
 // 비밀번호와 비밀번호 확인이 일치하는지 확인하는 함수
 const validatePasswordMatch = (passwordInput, confirmInput) => {
@@ -120,9 +135,9 @@ registrationForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateForm() == true) {
         console.log("모든 필드가 유효합니다. 회원가입을 진행합니다.");
-        function goToMainPage() {
-            window.location.href = "main.html"; // 이동할 페이지 URL
-        }
+        alert("회원가입이 완료되었습니다! 메인 페이지로 이동합니다.");
+        goToMainPage();
+
     }
     else {
         console.log("위 필드 중 에러가 발생 했습니다. 회원가입을 진행할 수 없습니다.");
