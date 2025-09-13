@@ -38,12 +38,12 @@ h2 {
 .inputGroup {
     /* 8px는 패딩 상하 
     12px는 패딩 좌우 */
-    padding: 8px 20px
+    padding: 8px 20px;
 }
 
 .inputGroup label{
     display:block;
-    padding: 12px 0;;
+    padding: 12px 0;
 }
 
 
@@ -53,6 +53,7 @@ h2 {
     padding: 12px;
     border: 2px solid #e2e2e2;
     font-size: 16px;
+    border-radius: 10px;
 }
 
 .inputGroup input:focus {
@@ -88,13 +89,14 @@ h2 {
 
 #wrapper button {
     display: block;
-    width:100%;
+    width:80%;
     margin: 0 auto;
     height: 50px;
+    border-radius: 10px;
     margin-bottom:25px;
     font-size: 18px;
-    background-color: var(--primaryColor);
-    border: 2px solid var(--primaryColor);
+    background-color: black;
+    border: 2px solid black;
     /* 텍스트 색 */
     color: white;
     cursor: pointer;

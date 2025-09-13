@@ -120,6 +120,9 @@ registrationForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (validateForm() == true) {
         console.log("모든 필드가 유효합니다. 회원가입을 진행합니다.");
+        function goToMainPage() {
+            window.location.href = "main.html"; // 이동할 페이지 URL
+        }
     }
     else {
         console.log("위 필드 중 에러가 발생 했습니다. 회원가입을 진행할 수 없습니다.");
