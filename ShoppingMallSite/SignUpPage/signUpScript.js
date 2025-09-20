@@ -11,7 +11,7 @@ const registrationForm = document.getElementById("registrationForm");
 const passwordInput = document.getElementById("password");
 
 function goToMainPage() {
-    window.location.href = "Hero.tsx"; // 이동할 페이지 URL
+    window.location.href = "../MainPage/mainPage.html"; // 이동할 페이지 URL
 }
 
 const updateHelperText = (input, message, isValid) => {
